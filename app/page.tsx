@@ -68,7 +68,6 @@ export default function Home() {
                 <img src="/logo.svg" alt="Logo" className="p-2 rounded hover:bg-red-600 w-32" />
               </a>
             </div>
-            
             {/* Add another items navbar here */}
           </div>
         </div>

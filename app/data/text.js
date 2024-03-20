@@ -5,7 +5,7 @@ const Word1 = (
         <div className="overflow-hidden">
           <div className="text-sm opacity-90">
             <div className="duration-[1500ms] opacity-100">
-              <p className="mb-2.5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+              <p className="mb-2.5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
             </div>
             <div className="duration-[1500ms] opacity-100">
               <p className="mb-2.5">when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
@@ -68,7 +68,7 @@ const Word4 = (
               <p className="mb-2.5">But with each trial, Emily grew stronger and wiser. She learned to trust in herself and in the bonds she shared with her friends, drawing strength from their unwavering support and companionship.</p>
             </div>
             <div className="duration-[1500ms] opacity-100">
-              <p className="mb-2.5">But amidst the grandeur and majesty of her adventures, Emily never lost sight of the simple pleasures that had brought her joy in the first place. She reveled in the beauty of a starlit sky, the laughter of children at play, and the warmth of a cozy fire on a cold winter's night.</p>
+              <p className="mb-2.5">But amidst the grandeur and majesty of her adventures, Emily never lost sight of the simple pleasures that had brought her joy in the first place. She reveled in the beauty of a starlit sky, the laughter of children at play, and the warmth of a cozy fire on a cold winter's night</p>
             </div>
           </div>
         </div>
