@@ -5,9 +5,9 @@ import gambar from "./assets/img/graffiti_bg_final.jpg";
 import shao from "./assets/img/shao.png";
 import shao1 from "./assets/img/shaos.png";
 import shao2 from "./assets/img/shao_e.png";
-import {Word1, Word2} from "./data/text"
+import {Word1, Word2, Word3, Word4, Word5, Word6, Word7, Word8, Word9} from "./data/text"
 import { useSound } from 'use-sound';
-
+import Logo from "./assets/img/logo.svg"
 
 export default function Home() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -66,20 +66,41 @@ export default function Home() {
   console.log(scrollPosition)
 
   return (
-    <main className="">
-      <div className="bg-black relative h-screen" style={{ aspectRatio: '6151 / 1080' }}>
+    <main className="bg-black force-overflow-hidden" style={{ overflow: 'unset', backgroundColor: 'black'}}>
+
+      {/* Navbar */}
+      <nav className="fixed w-full top-0 border-opacity-0 lg:px-8 px-4 pt-[18px] z-50">
+        <div className="group flex h-full border-b border-white items-center justify-between  mx-auto relative z-10 border-opacity-0">
+          <div className="flexflex-shrink-[5] mr-2">
+            <div className="flex">
+              <a href="/" className="w-min-content">
+                <img src="/logo.svg" alt="Logo" className="p-2 rounded hover:bg-red-600 w-32" />
+              </a>
+            </div>
+            
+            {/* Add other navbar items here */}
+          </div>
+        </div>
+      </nav>
+      
+      <div className="bg-black relative h-screen md:block" style={{ aspectRatio: '6151 / 1080' }}>
         <img src={shao.src} className="absolute z-20 duration-200 select-none left-1" style={{ height: '49%', left: '0.53%', bottom: '5%', opacity: scrollPosition > 100 ? 0 : 1 }} />
         <img src={shao1.src} className="absolute z-20 select-none left-1 duration-300" style={{ height: '47.6%', left: '22.8%', bottom: '6%', opacity: (scrollPosition > 100 && scrollPosition <= 1600) ? 1 : 0 }} />
         <img src={shao2.src} className="absolute z-20 duration-200 select-none left-1" style={{ height: '29%', left: '43.3%', bottom: '5%', opacity: scrollPosition > 1600 ? 1 : 0 }} />
         <img src={gambar.src} />
 
+        {/* Fixed Subtitle */}
+        <div className="fixed duration-300 z-50 rounded-lg shadow-smooth text-white px-5 py-5 origin-bottom-right overflow-hidden flex backdrop:blur-lg  justify-center w-full" style={{
+          paddingLeft: '20px', paddingRight: '20px', maxWidth: '760px', left: 'calc(50% - 560px)', bottom: '8px', transition: 'opacity 0.5s ease-in-out', opacity: '0.95'
+        }}>
+          {/* Text */}
+          {scrollPosition >= 0 && scrollPosition < 170 ? Word1 : scrollPosition >= 200 && scrollPosition < 305 ? Word2 : scrollPosition >= 305 && scrollPosition < 775 ? Word3 :scrollPosition >= 775 && scrollPosition < 1313 ? Word4 : scrollPosition >= 1313 && scrollPosition < 1500 ? Word5 : scrollPosition >= 1500 && scrollPosition < 2041 ? Word6 : scrollPosition >= 2041 && scrollPosition < 2686 ? Word7 : scrollPosition >= 2686 && scrollPosition < 2871 ? Word8 : scrollPosition >= 2871 ? Word9 : null} 
+        </div>
+
         {/* Fixed Navbar */}
         <div className="fixed duration-300 z-50 rounded-lg shadow-smooth text-white px-5 py-5 origin-bottom-right overflow-hidden backdrop:blur-lg bg-black/80 scale-100" style={{
           paddingLeft: '20px', paddingRight: '20px', width: '400px', right: '8px', bottom: '8px', transition: 'opacity 0.5s ease-in-out', opacity: '0.95'
         }}>
-          {/* Text */}
-          {scrollPosition >= 0 && scrollPosition < 300 ? Word1 : scrollPosition >= 300 ? Word2 : null }
-
           {/* Button Play Music */}
           <div>
             <div className="flex flex-row justify-between mt-4 w-full">
@@ -106,16 +127,22 @@ export default function Home() {
             <div className="w-full flex justify-center mt-4">
               <div className="w-[360px]">
                 <div className="w-full h-5 relative">
-                  <button className={`absolute h-[85px] duration-200 z-[51] ${scrollPosition >= 0 && scrollPosition < 305 ? 'opacity-100' : 'opacity-20'} hover:opacity-50`} style={{left: '0%', width: '4%'}} onClick={() => scrollToPosition(0)}>
+                  <button className={`absolute h-[85px] duration-200 z-[51] ${scrollPosition >= 0 && scrollPosition < 170 ? 'opacity-100' : 'opacity-20'} hover:opacity-50`} style={{left: '0%', width: '4%'}} onClick={() => scrollToPosition(0)}>
                     <div className="w-1 h-1 rounded-full bg-white absolute top-2 left-1/2"></div>
                   </button>
-                  <button className={`absolute h-[85px] duration-200 z-[51] ${scrollPosition >= 305 && scrollPosition < 775 ? 'opacity-100' : 'opacity-20'} hover:opacity-50`} style={{left: '4%', width: '27%'}} onClick={() => scrollToPosition(305)}>
+                  <button className={`absolute h-[85px] duration-200 z-[51] ${scrollPosition >= 200 && scrollPosition < 305 ? 'opacity-100' : 'opacity-20'} hover:opacity-50`} style={{left: '7%', width: '14%'}} onClick={() => scrollToPosition(0)}>
                     <div className="w-1 h-1 rounded-full bg-white absolute top-2 left-1/2"></div>
                   </button>
-                  <button className={`absolute h-[85px] duration-200 z-[51] ${scrollPosition >= 775 && scrollPosition < 1313 ? 'opacity-100' : 'opacity-20'} hover:opacity-50`} style={{left: '21%', width: '14%'}} onClick={() => scrollToPosition(775)}>
+                  <button className={`absolute h-[85px] duration-200 z-[51] ${scrollPosition >= 305 && scrollPosition < 775 ? 'opacity-100' : 'opacity-20'} hover:opacity-50`} style={{left: '9%', width: '27%'}} onClick={() => scrollToPosition(305)}>
                     <div className="w-1 h-1 rounded-full bg-white absolute top-2 left-1/2"></div>
                   </button>
-                  <button className={`absolute h-[85px] duration-200 z-[51] ${scrollPosition >= 1313 && scrollPosition < 2041 ? 'opacity-100' : 'opacity-20'} hover:opacity-50`} style={{left: '35%', width: '17%'}} onClick={() => scrollToPosition(1313)}>
+                  <button className={`absolute h-[85px] duration-200 z-[51] ${scrollPosition >= 775 && scrollPosition < 1313 ? 'opacity-100' : 'opacity-20'} hover:opacity-50`} style={{left: '27%', width: '14%'}} onClick={() => scrollToPosition(775)}>
+                    <div className="w-1 h-1 rounded-full bg-white absolute top-2 left-1/2"></div>
+                  </button>
+                  <button className={`absolute h-[85px] duration-200 z-[51] ${scrollPosition >= 1313 && scrollPosition < 1500 ? 'opacity-100' : 'opacity-20'} hover:opacity-50`} style={{left: '35%', width: '17%'}} onClick={() => scrollToPosition(1313)}>
+                    <div className="w-1 h-1 rounded-full bg-white absolute top-2 left-1/2"></div>
+                  </button>
+                  <button className={`absolute h-[85px] duration-200 z-[51] ${scrollPosition >= 1500 && scrollPosition < 2041 ? 'opacity-100' : 'opacity-20'} hover:opacity-50`} style={{left: '48%', width: '17%'}} onClick={() => scrollToPosition(1313)}>
                     <div className="w-1 h-1 rounded-full bg-white absolute top-2 left-1/2"></div>
                   </button>
                   <button className={`absolute h-[85px] duration-200 z-[51] ${scrollPosition >= 2041 && scrollPosition < 2686 ? 'opacity-100' : 'opacity-20'} hover:opacity-50`} style={{left: '55%', width: '17%'}} onClick={() => scrollToPosition(2041)}>

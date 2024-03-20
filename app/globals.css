@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -14,6 +13,11 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+}
+
+body {
+  overflow-x: scroll; /* Menyembunyikan scroll horizontal */
+  overflow-y: hidden; /* Mengaktifkan scroll vertikal */
 }
 
 ::-webkit-scrollbar {
