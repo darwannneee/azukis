@@ -46,7 +46,7 @@ export default function Home() {
       window.removeEventListener("scroll", handleScroll);
     };
     
-  }, [roundedRef.current]);
+  }, []);
 
   const handleClick = () => {
     if (isPlaying) {
@@ -132,7 +132,7 @@ export default function Home() {
                   <div id="w-fuls" className="w-full rounded relative h-[65px] border border-primary-white">
                     <div className="h-full absolute left-0 bg-black/40 z-30" style={{ width: `${Math.min(scrollPosition / 10.430555556, maxLeftPosition)}px`}}></div>
                     <div className="h-full absolute right-0 bg-black/50 z-30" style={{ width: `${maxLeftPosition - Math.min(scrollPosition / 10.430555556, maxLeftPosition)}px`}}></div>
-                    <div className={`border-2 border-white rounded h-full absolute z-40`}  style={{ width: '68px', left: `${Math.min(scrollPosition / 10.430555556, maxLeftPosition)}px`}}></div>
+                    <div className={`border-2 border-white rounded h-full absolute z-40`}  style={{ width: '68px', left: `${Math.min(scrollPosition / 10.430555556, (maxLeftPosition - 68 ))}px`}}></div>
                     <img className="h-full rounded select-none z-20 absolute right-0 top-0 overflow-hidden object-cover object-right duration-200" src={gambar.src} style={{aspectRatio: '6151 / 1080', width: `${maxLeftPosition - Math.min(scrollPosition / 10.430555556, maxLeftPosition)}px`, filter: 'blur(4px)', transitionProperty: 'filter'}} />
                     <img className="h-full rounded select-none" src={gambar.src} style={{ aspectRatio: '90000 / 1080;'}} ref={roundedRef}/>
                   </div>
