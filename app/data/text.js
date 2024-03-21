@@ -3,9 +3,9 @@ const Word1 = (
     <div className="w-full">
       <div className="overflow-hidden" style={{ maxWidth: '760px' }}>
         <div className="overflow-hidden">
-          <div className="text-sm opacity-90">
+          <div className="text-sm opacity-90 text-center">
             <div className="duration-[1500ms] opacity-100">
-              <p className="mb-2.5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s</p>
+              <p className="mb-2.5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
             </div>
             <div className="duration-[1500ms] opacity-100">
               <p className="mb-2.5">when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
@@ -23,7 +23,7 @@ const Word2 = (
     <div className="w-full">
       <div className="overflow-hidden" style={{ maxWidth: '760px' }}>
         <div className="overflow-hidden">
-          <div className="text-sm opacity-90">
+          <div className="text-sm opacity-90 text-center">
             <div className="duration-[1500ms] opacity-100">
               <p className="mb-2.5">In a quaint little town nestled between rolling hills and lush forests, there lived a young girl named Emily. Emily was known for her curious nature and adventurous spirit. One sunny afternoon, while exploring the woods behind her house, she stumbled upon an old, mysterious key half-buried in the earth.</p>
             </div>
@@ -43,7 +43,7 @@ const Word3 = (
     <div className="w-full">
       <div className="overflow-hidden" style={{ maxWidth: '760px' }}>
         <div className="overflow-hidden">
-          <div className="text-sm opacity-90">
+          <div className="text-sm opacity-90 text-center">
             <div className="duration-[1500ms] opacity-100">
               <p className="mb-2.5">As Emily ventured deeper into the hidden realm, she encountered enchanting landscapes filled with wonders beyond imagination. She crossed shimmering lakes inhabited by graceful water nymphs and traversed forests alive with the songs of mystical creatures.</p>
             </div>
@@ -63,7 +63,7 @@ const Word4 = (
     <div className="w-full">
       <div className="overflow-hidden" style={{ maxWidth: '760px' }}>
         <div className="overflow-hidden">
-          <div className="text-sm opacity-90">
+          <div className="text-sm opacity-90 text-center">
             <div className="duration-[1500ms] opacity-100">
               <p className="mb-2.5">But with each trial, Emily grew stronger and wiser. She learned to trust in herself and in the bonds she shared with her friends, drawing strength from their unwavering support and companionship.</p>
             </div>
@@ -84,7 +84,7 @@ const Word5 = (
     <div className="w-full">
       <div className="overflow-hidden" style={{ maxWidth: '760px' }}>
         <div className="overflow-hidden">
-          <div className="text-sm opacity-90">
+          <div className="text-sm opacity-90 text-center">
             <div className="duration-[1500ms] opacity-100">
               <p className="mb-2.5">One memorable encounter led Emily to a hidden village nestled deep within the enchanted woods. There, she discovered a community of elves who lived in harmony with nature, tending to the ancient trees and caring for the creatures of the forest.</p>
             </div>
@@ -104,7 +104,7 @@ const Word6 = (
     <div className="w-full">
       <div className="overflow-hidden" style={{ maxWidth: '760px' }}>
         <div className="overflow-hidden">
-          <div className="text-sm opacity-90">
+          <div className="text-sm opacity-90 text-center">
             <div className="duration-[1500ms] opacity-100">
               <p className="mb-2.5">As the sunlight streamed through the trees, Emily knew that her journey was far from over. But with each victory, she grew stronger and more determined to protect the magical world and all who called it home.</p>
             </div>
@@ -124,7 +124,7 @@ const Word7 = (
     <div className="w-full">
       <div className="overflow-hidden" style={{ maxWidth: '760px' }}>
         <div className="overflow-hidden">
-          <div className="text-sm opacity-90">
+          <div className="text-sm opacity-90 text-center">
             <div className="duration-[1500ms] opacity-100">
               <p className="mb-2.5">Driven by a sense of duty and curiosity, Emily embarked on a quest to find the Prism of Eternity before it fell into the wrong hands. Along the way, she encountered allies and adversaries alike, each vying for control of the artifact and the immense power it held.</p>
             </div>
@@ -145,7 +145,7 @@ const Word8 = (
     <div className="w-full">
       <div className="overflow-hidden" style={{ maxWidth: '760px' }}>
         <div className="overflow-hidden">
-          <div className="text-sm opacity-90">
+          <div className="text-sm opacity-90 text-center">
             <div className="duration-[1500ms] opacity-100">
               <p className="mb-2.5">IBut with each obstacle she overcame, Emily grew more determined than ever to reach her goal. She relied on her wit, her courage, and her unwavering belief in the power of good to guide her through the darkest of times.</p>
             </div>
@@ -165,7 +165,7 @@ const Word9 = (
     <div className="w-full">
       <div className="overflow-hidden" style={{ maxWidth: '760px' }}>
         <div className="overflow-hidden">
-          <div className="text-sm opacity-90">
+          <div className="text-sm opacity-90 text-center">
             <div className="duration-[1500ms] opacity-100">
               <p className="mb-2.5">But as she grasped the Prism, she felt a surge of energy course through her, filling her with a sense of purpose and clarity. She realized then that the true power of the artifact lay not in its ability to shape reality, but in its ability to inspire hope and unite those who sought to protect the world from darkness.</p>
             </div>
