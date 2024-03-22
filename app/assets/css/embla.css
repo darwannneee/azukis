@@ -1,0 +1,26 @@
+.embla {
+    --slide-height: 10rem;
+    --slide-spacing: 1rem;
+    --slide-size: 100%;
+  }
+  .embla__viewport {
+    overflow: hidden;
+  }
+  .embla__container {
+    backface-visibility: hidden;
+    display: flex;
+    margin-left: calc(var(--slide-spacing) * -1);
+  }
+  .embla__slide {
+    flex: 0 0 100%; /* Default slide covers 100% of the viewport */
+    min-width: 0;
+  }
+  .embla__slide__number {
+    box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--slide-height);
+    overflow-wrap: break-word; /* Memaksa teks untuk memecah ke baris baru saat melewati batas kontainernya */
+  }
+  

@@ -9,6 +9,13 @@ import shao from "./assets/img/shao.png";
 import shao1 from "./assets/img/shaos.png";
 import shao2 from "./assets/img/shao_e.png";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
+import EmblaCarousel from './Mobile'
+import { EmblaOptionsType } from 'embla-carousel'
+import './assets/css/embla.css'
+
+const OPTIONS: EmblaOptionsType = {}
+const SLIDE_COUNT = 5
+const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 
 export default function Home() {
@@ -63,8 +70,12 @@ export default function Home() {
   console.log(scrollPosition)
 
   return (
-    <ReactLenis root options={{ lerp: 0.007, duration: 7, smoothWheel: true, orientation: "horizontal", gestureOrientation: 'horizontal' }}>
-      <main className="bg-black force-overflow-hidden" style={{ overflow: 'unset', backgroundColor: 'black'}}>
+    <ReactLenis root options={{ lerp: 0.01, duration: 0.2, smoothWheel: true, orientation: "horizontal", gestureOrientation: 'horizontal' }}>
+      {window.innerWidth <= 768 ? (
+                // Jika lebar layar kurang dari atau sama dengan 768px (misalnya, untuk perangkat seluler)
+                <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+            ) : (
+      <main className="bg-black" style={{ overflow: 'unset', backgroundColor: 'black'}}>
 
         {/* Navbar */}
         <nav className="fixed w-full top-0 border-opacity-0 lg:px-8 px-4 pt-[18px] z-50">
@@ -88,19 +99,20 @@ export default function Home() {
           <img src={gambar.src} />
 
           {/* Text Subtitle */}
-          <div className="fixed duration-300 z-50 rounded-lg shadow-smooth text-white px-5 py-5 origin-bottom-right overflow-hidden flex backdrop:blur-lg  justify-center w-full" style={{
-            paddingLeft: '20px', paddingRight: '20px', maxWidth: '760px', left: 'calc(50% - 560px)', bottom: '8px', transition: 'opacity 0.5s ease-in-out', opacity: '0.95'
+          <div className="fixed duration-300 z-50 rounded-lg shadow-smooth text-white px-5 py-5 origin-bottom-right overflow-hidden flex backdrop:blur-lg  justify-center w-full whitespace-normal" style={{
+            paddingLeft: '20px', paddingRight: '20px', maxWidth: '720px', bottom: '8px', transition: 'opacity 0.5s ease-in-out', opacity: '0.95'
           }}>
-            {/* Text */}
-            {scrollPosition >= 0 && scrollPosition < 170 ? Word1 : scrollPosition >= 200 && scrollPosition < 305 ? Word2 : scrollPosition >= 305 && scrollPosition < 775 ? Word3 :scrollPosition >= 775 && scrollPosition < 1313 ? Word4 : scrollPosition >= 1313 && scrollPosition < 1500 ? Word5 : scrollPosition >= 1500 && scrollPosition < 2041 ? Word6 : scrollPosition >= 2041 && scrollPosition < 2686 ? Word7 : scrollPosition >= 2686 && scrollPosition < 2871 ? Word8 : scrollPosition >= 2871 ? Word9 : null} 
+              <div> 
+                {scrollPosition >= 0 && scrollPosition < 170 ? Word1 : scrollPosition >= 200 && scrollPosition < 305 ? Word2 : scrollPosition >= 305 && scrollPosition < 775 ? Word3 :scrollPosition >= 775 && scrollPosition < 1313 ? Word4 : scrollPosition >= 1313 && scrollPosition < 1500 ? Word5 : scrollPosition >= 1500 && scrollPosition < 2041 ? Word6 : scrollPosition >= 2041 && scrollPosition < 2686 ? Word7 : scrollPosition >= 2686 && scrollPosition < 2871 ? Word8 : scrollPosition >= 2871 ? Word9 : null} 
+              </div> 
           </div>
 
           {/* Fixed Navbar */}
-          <div className="fixed duration-300 z-50 rounded-lg shadow-smooth text-white px-5 py-5 origin-bottom-right overflow-hidden backdrop:blur-lg bg-black/80 scale-100" style={{
+          <div className="fixed duration-300 z-50 rounded-lg shadow-smooth text-white px-5 py-5 origin-bottom-right overflow-hidden backdrop:blur-lg bg-black/80 scale-100 hidden md:block" style={{
             paddingLeft: '20px', paddingRight: '20px', width: '400px', right: '8px', bottom: '8px', transition: 'opacity 0.5s ease-in-out', opacity: '0.95'
           }}>
             {/* Button Play Music */}
-            <div>
+            <div className="">
               <div className="flex flex-row justify-between mt-4 w-full">
                 <div className="flex flex-row gap-1.5 mr-1.5">
                   <button className="w-10 h-8 flex justify-center items-center border border-tertiary-white overlay-secondary-white hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={() => handleClick()}>
@@ -161,12 +173,12 @@ export default function Home() {
                   </div>
                   {/* Maps */}
                   <div>
-                    <div id="w-fuls" className="w-full rounded relative h-[65px] border border-primary-white">
+                    <div id="w-fuls" className="w-full rounded relative h-[65px] border border-primary-white" ref={roundedRef}>
                       <div className="h-full absolute left-0 bg-black/40 z-30" style={{ width: `${Math.min(scrollPosition / 10.430555556, maxLeftPosition)}px`}}></div>
                       <div className="h-full absolute right-0 bg-black/50 z-30" style={{ width: `${maxLeftPosition - Math.min(scrollPosition / 10.430555556, maxLeftPosition)}px`}}></div>
                       <div className={`border-2 border-white rounded h-full absolute z-40`}  style={{ width: '68px', left: `${Math.min(scrollPosition / 10.430555556, (maxLeftPosition - 68 ))}px`}}></div>
                       <img className="h-full rounded select-none z-20 absolute right-0 top-0 overflow-hidden object-cover object-right duration-200" src={gambar.src} style={{aspectRatio: '6151 / 1080', width: `${maxLeftPosition - Math.min(scrollPosition / 10.430555556, maxLeftPosition)}px`, filter: 'blur(4px)', transitionProperty: 'filter'}} />
-                      <img className="h-full rounded select-none" src={gambar.src} style={{ aspectRatio: '90000 / 1080;'}} ref={roundedRef}/>
+                      <img className="h-full rounded select-none" src={gambar.src} style={{ aspectRatio: '90000 / 1080;'}}/>
                     </div>
                   </div>
                 </div>
@@ -175,6 +187,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+            )}
     </ReactLenis>
   );
 }
