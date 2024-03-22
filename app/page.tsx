@@ -16,12 +16,12 @@ import './assets/css/embla.css'
 const OPTIONS: EmblaOptionsType = {}
 const SLIDE_COUNT = 5
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
-const [isMobile, setIsMobile] = useState(false);
 
 export default function Home() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [maxLeftPosition, setMaxLeftPosition] = useState(0);
   const roundedRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   // variabel for usesound
   const [play, { stop }] = useSound('/song.mp3');
