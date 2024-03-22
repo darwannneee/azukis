@@ -9,7 +9,7 @@ import shao from "./assets/img/shao.png";
 import shao1 from "./assets/img/shaos.png";
 import shao2 from "./assets/img/shao_e.png";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
-import EmblaCarousel from './Mobile'
+import EmblaCarousel from './device/Mobile'
 import { EmblaOptionsType } from 'embla-carousel'
 import './assets/css/embla.css'
 
@@ -63,11 +63,6 @@ export default function Home() {
     window.scrollTo({left : width, behavior: 'smooth'})
   };
 
-  const lenis = useLenis(({ scroll }) => {
-    
-  })
-
-  console.log(scrollPosition)
 
   return (
     <ReactLenis root options={{ lerp: 0.01, duration: 0.2, smoothWheel: true, orientation: "horizontal", gestureOrientation: 'horizontal' }}>

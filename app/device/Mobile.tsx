@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
-import gambar from "./assets/img/graffiti_bg_final.jpg";
-import {Word1, Word2, Word3, Word4, Word5, Word6, Word7, Word8, Word9} from "./data/text"
+import gambar from "../assets/img/graffiti_bg_final.jpg";
+import {Word1, Word2, Word3, Word4, Word5, Word6, Word7, Word8, Word9} from "../data/text"
 type PropType = {
   slides: number[]
   options?: EmblaOptionsType
