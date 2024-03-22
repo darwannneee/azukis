@@ -16,7 +16,7 @@ import './assets/css/embla.css'
 const OPTIONS: EmblaOptionsType = {}
 const SLIDE_COUNT = 5
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
-
+const isMobile = window.innerWidth <= 768;
 
 export default function Home() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -66,7 +66,7 @@ export default function Home() {
 
   return (
     <ReactLenis root options={{ lerp: 0.01, duration: 0.2, smoothWheel: true, orientation: "horizontal", gestureOrientation: 'horizontal' }}>
-      {window.innerWidth <= 768 ? (
+      {isMobile ? (
                 // Jika lebar layar kurang dari atau sama dengan 768px (misalnya, untuk perangkat seluler)
                 <EmblaCarousel slides={SLIDES} options={OPTIONS} />
             ) : (
