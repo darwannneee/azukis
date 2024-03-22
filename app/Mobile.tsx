@@ -85,7 +85,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
             <div className='group flex h-full border-b border-white items-center justify-between  mx-auto relative z-10 border-opacity-0'>
                 <div className='flex-shrink-[5] mr-2'>
                     <div className='flex'>
-                        <a className='w-min-content' href='/'>
+                        <a className='w-min-content'>
                             <img src="/logo.svg" alt="Logo" className="p-2 rounded hover:bg-red-600 w-32" />
                         </a>
                     </div>
