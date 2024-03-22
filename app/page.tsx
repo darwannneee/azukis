@@ -16,7 +16,7 @@ import './assets/css/embla.css'
 const OPTIONS: EmblaOptionsType = {}
 const SLIDE_COUNT = 5
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
-const isMobile = window.innerWidth <= 768;
+const [isMobile, setIsMobile] = useState(false);
 
 export default function Home() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -46,6 +46,21 @@ export default function Home() {
     };
     
   }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Pertama-tama, panggil handleResize untuk menentukan status isMobile saat komponen dipasang
+    handleResize();
+
+    // Kemudian, tambahkan event listener untuk menangani perubahan ukuran jendela
+    window.addEventListener('resize', handleResize);
+
+    // Jangan lupa untuk membersihkan event listener pada saat komponen dilepas
+    return () => window.removeEventListener('resize', handleResize);
+  }, []); // Gunakan array kosong agar useEffect hanya dipanggil sekali saat komponen dipasang
 
   // HandleClick for UseSound
   const handleClick = () => {
