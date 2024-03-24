@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import gambar from "../assets/img/graffiti_bg_final.jpg";
-import {Word1, Word2, Word3, Word4, Word5, Word6, Word7, Word8, Word9} from "../data/text"
+import {Word1, Word2, Word3, Word4, Word5, Word6, Word7, Word8, Word9} from "./data/textMobile.js"
 type PropType = {
   slides: number[]
   options?: EmblaOptionsType
@@ -111,8 +111,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                     <div className='pt-28 h-screen overflow-hidden relative' ref={emblaRef}>
                         <div className='embla__container w-full h-auto absolute bottom-0'>
                         {[Word1, Word2, Word3, Word4, Word5, Word6, Word7, Word8, Word9].map((word, index) => (
-                            <div className="embla__slide" key={index}>
-                                <div className="embla__slide__number">{word}</div>
+                            <div className="embla__slide h-auto px-6 flex items-end pb-2" key={index}>
+                                <div className="embla__slide__number  h-auto text-white relative overflow-hidden">{word}</div>
                             </div>
                         ))}
                         </div>
