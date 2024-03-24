@@ -12,8 +12,10 @@ import shao2 from "../assets/img/shao_e.png";
 export default function Dekstop() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [maxLeftPosition, setMaxLeftPosition] = useState(0);
+  const [imageWidth, setimageWidth] = useState(0);
   const roundedRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const imageRef = useRef(null)
+  const [mapsWidth, setMapsWidth] = useState(0)
 
   // variabel for usesound
   const [play, { stop }] = useSound('/song.mp3');
@@ -30,7 +32,7 @@ export default function Dekstop() {
     if (roundedRef.current) {
       const fullWidth = (roundedRef.current as HTMLElement).clientWidth;
       setMaxLeftPosition(fullWidth);
-      console.log(fullWidth)
+      console.log(`Full Width ${fullWidth}`)
     }
 
     return () => {
@@ -40,19 +42,21 @@ export default function Dekstop() {
   }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+    if (imageRef.current) {
+      const fullWidth = (imageRef.current as HTMLElement).clientWidth;
+      setimageWidth(fullWidth);
+    }
+  }, [imageRef]); // Gunakan imageRef sebagai dependensi untuk memicu efek setiap kali referensinya berubah
 
-    // Pertama-tama, panggil handleResize untuk menentukan status isMobile saat komponen dipasang
-    handleResize();
-
-    // Kemudian, tambahkan event listener untuk menangani perubahan ukuran jendela
-    window.addEventListener('resize', handleResize);
-
-    // Jangan lupa untuk membersihkan event listener pada saat komponen dilepas
-    return () => window.removeEventListener('resize', handleResize);
-  }, []); // Gunakan array kosong agar useEffect hanya dipanggil sekali saat komponen dipasang
+  // Tunggu perbaruan state sebelum mencetak lebar gambar
+  useEffect(() => { 4630
+    if(imageWidth <= 2900) {
+      console.log('hi')
+      setMapsWidth(230)
+    } else {
+      setMapsWidth(68)
+    }
+  }, [imageWidth]);
 
   // HandleClick for UseSound
   const handleClick = () => {
@@ -69,6 +73,7 @@ export default function Dekstop() {
     console.log('Clicked 1')
     window.scrollTo({left : width, behavior: 'smooth'})
   };
+  
 
 
   return (
@@ -93,7 +98,7 @@ export default function Dekstop() {
           <img src={shao.src} className="absolute z-20 duration-200 select-none left-1" style={{ height: '49%', left: '0.53%', bottom: '5%', opacity: scrollPosition > 100 ? 0 : 1 }} />
           <img src={shao1.src} className="absolute z-20 select-none left-1 duration-300" style={{ height: '47.6%', left: '22.8%', bottom: '6%', opacity: (scrollPosition > 100 && scrollPosition <= 1600) ? 1 : 0 }} />
           <img src={shao2.src} className="absolute z-20 duration-200 select-none left-1" style={{ height: '29%', left: '43.3%', bottom: '5%', opacity: scrollPosition > 1600 ? 1 : 0 }} />
-          <img src={gambar.src} />
+          <img src={gambar.src} className="w-full" ref={imageRef}/>
 
           {/* Text Subtitle */}
           <div className="fixed duration-300 z-50 rounded-lg shadow-smooth text-white px-5 py-5 origin-bottom-right overflow-hidden flex backdrop:blur-lg justify-center w-full whitespace-normal md:max-w-[500px] xl:max-w-[720px] md:translate-x-[-90%] xl:translate-x-[-75%]"
@@ -231,10 +236,10 @@ export default function Dekstop() {
                   {/* Maps */}
                   <div>
                     <div id="w-fuls" className="w-full rounded relative h-[65px] border border-primary-white" ref={roundedRef}>
-                      <div className="h-full absolute left-0 bg-black/40 z-30" style={{ width: `${Math.min(scrollPosition / 10.430555556, maxLeftPosition)}px`}}></div>
-                      <div className="h-full absolute right-0 bg-black/50 z-30" style={{ width: `${maxLeftPosition - Math.min(scrollPosition / 10.430555556, maxLeftPosition)}px`}}></div>
-                      <div className={`border-2 border-white rounded h-full absolute z-40`}  style={{ width: '68px', left: `${Math.min(scrollPosition / 10.430555556, (maxLeftPosition - 68 ))}px`}}></div>
-                      <img className="h-full rounded select-none z-20 absolute right-0 top-0 overflow-hidden object-cover object-right duration-200" src={gambar.src} style={{aspectRatio: '6151 / 1080', width: `${maxLeftPosition - Math.min(scrollPosition / 10.430555556, maxLeftPosition)}px`, filter: 'blur(4px)', transitionProperty: 'filter'}} />
+                      <div className="h-full absolute left-0 bg-black/40 z-30" style={{ width: `${Math.min(scrollPosition / 10.430555556, 289)}px`}}></div>
+                      <div className="h-full absolute right-0 bg-black/50 z-30" style={{ width: `${maxLeftPosition - Math.min(scrollPosition / 10.430555556, 289)}px`}}></div>
+                      <div className={`border-2 border-white rounded h-full absolute z-40`}  style={{ width: `${mapsWidth}px`, left: `${Math.min(scrollPosition / 10.430555556, (289 ))}px`}}></div>
+                      <img className="h-full rounded select-none z-20 absolute right-0 top-0 overflow-hidden object-cover object-right duration-200" src={gambar.src} style={{aspectRatio: '6151 / 1080', width: `${maxLeftPosition - Math.min(scrollPosition / 10.430555556, 289)}px`, filter: 'blur(4px)', transitionProperty: 'filter'}} />
                       <img className="h-full rounded select-none" src={gambar.src} style={{ aspectRatio: '90000 / 1080;'}}/>
                     </div>
                   </div>
