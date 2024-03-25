@@ -44,14 +44,15 @@ export default function Dekstop() {
     if (imageRef.current) {
       const fullWidth = (imageRef.current as HTMLElement).clientWidth;
       setimageWidth(fullWidth);
+      console.log(`Image Width = ${fullWidth}`)
     }
   }, [imageRef]); // Gunakan imageRef sebagai dependensi untuk memicu efek setiap kali referensinya berubah
 
   // Tunggu perbaruan state sebelum mencetak lebar gambar
-  useEffect(() => { 4630
-    if(imageWidth <= 2900) {
+  useEffect(() => { 
+    if(imageWidth <= 4089) {
       console.log('hi')
-      setMapsWidth(230)
+      setMapsWidth(214)
     } else {
       setMapsWidth(68)
     }
@@ -184,23 +185,23 @@ export default function Dekstop() {
                       <h1 className="text-md">{currentTitle}</h1>
                     </div>
                     <div className="flex flex-row gap-2 mr-1.5">
-                      <button className="w-8 h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={() => playPrevious() }>
+                      <button className="xl:w-8 xl:h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={() => playPrevious() }>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 19 2 12 11 5 11 19"></polygon><polygon points="22 19 13 12 22 5 22 19"></polygon></svg>
                       </button>
                       {/* Button Play & Pause */}
-                      <button className="w-8 h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={() => playSound() }>
+                      <button className="md:w-6 md:h-6 xl:w-8 xl:h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={() => playSound() }>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                       </button>
                       {/* Button Next */}
-                      <button className="w-8 h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={()=> playNext()}>
+                      <button className="md:w-6 md:h-6 xl:w-8 xl:h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={()=> playNext()}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 19 22 12 13 5 13 19"></polygon><polygon points="2 19 11 12 2 5 2 19"></polygon></svg>
                       </button>
                       {/* Button Volume UP */}
-                      <button className="w-8 h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none">
+                      <button className="md:w-6 md:h-6 xl:w-8 xl:h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
                       </button>
                       {/* ScrolSpY */}
-                      <input type="range" className="w-24 bg-transparent cursor-pointer appearance-none disabled:opacity-50 disabled:pointer-events-none focus:outline-none
+                      <input type="range" className="md:w-20 xl:w-24 bg-transparent cursor-pointer appearance-none disabled:opacity-50 disabled:pointer-events-none focus:outline-none
                       [&::-webkit-slider-thumb]:w-2.5
                       [&::-webkit-slider-thumb]:h-2.5
                       [&::-webkit-slider-thumb]:-mt-0.5
@@ -288,7 +289,7 @@ export default function Dekstop() {
                       <div className="h-full absolute left-0 bg-black/40 z-30" style={{ width: `${Math.min(scrollPosition / 10.430555556, 289)}px`}}></div>
                       <div className="h-full absolute right-0 bg-black/50 z-30" style={{ width: `${maxLeftPosition - Math.min(scrollPosition / 10.430555556, 289)}px`}}></div>
                       <div className={`border-2 border-white rounded h-full absolute z-40`}  style={{ width: `${mapsWidth}px`, left: `${Math.min(scrollPosition / 10.430555556, (289 ))}px`}}></div>
-                      <img className="h-full rounded select-none z-20 absolute right-0 top-0 overflow-hidden object-cover object-right duration-200" src={gambar.src} style={{aspectRatio: '6151 / 1080', width: `${maxLeftPosition - Math.min(scrollPosition / 10.430555556, 289)}px`, filter: 'blur(4px)', transitionProperty: 'filter'}} />
+                      <img className="h-full rounded select-none z-20 absolute right-0 top-0 overflow-hidden object-cover object-right duration-200" src={gambar.src} style={{aspectRatio: '6151 / 1080', width: `${maxLeftPosition - Math.min(scrollPosition / 10.430555556, 289) - mapsWidth}px`, filter: 'blur(4px)', transitionProperty: 'filter'}} />
                       <img className="h-full rounded select-none" src={gambar.src} style={{ aspectRatio: '90000 / 1080;'}}/>
                     </div>
                   </div>
