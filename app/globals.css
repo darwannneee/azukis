@@ -15,9 +15,11 @@
   }
 }
 
-body {
-  overflow-x: scroll; /* Menyembunyikan scroll horizontal */
-  overflow-y: hidden; /* Mengaktifkan scroll vertikal */
+
+.dekstop {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
 }
 
 ::-webkit-scrollbar {

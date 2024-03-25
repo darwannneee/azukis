@@ -126,9 +126,10 @@ export default function Dekstop() {
     var newSound = new Howl({ src: [songs[current].url], loop: true });
     setsound(newSound);
   };
+  
 
   return (
-      <main className="bg-black" style={{ overflow: 'unset', backgroundColor: 'black'}}>
+      <main className="bg-black dekstop" style={{ overflow: 'unset', backgroundColor: 'black'}} >
 
         {/* Navbar */}
         <nav className="fixed w-full top-0 border-opacity-0 lg:px-8 px-4 pt-[18px] z-50">

@@ -36,7 +36,7 @@ export default function Home() {
 
 
   return (
-    <ReactLenis root options={{ lerp: 0.01, duration: 0.2, smoothWheel: true, orientation: "horizontal", gestureOrientation: 'horizontal' }}>
+    <ReactLenis root options={{ lerp: 0.01, duration: 0.2, smoothWheel: true, orientation: "horizontal", gestureOrientation: 'both'}}>
       {isMobile ? (
                 // Mobile Responsive
                 <EmblaCarousel slides={SLIDES} options={OPTIONS} />
