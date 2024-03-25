@@ -17,6 +17,7 @@ export default function Dekstop() {
   const [imageWidth, setimageWidth] = useState(0);
   const roundedRef = useRef(null);
   const imageRef = useRef(null)
+  const [isOpen, setIsOpen] = useState(false)
 
   const [mapsWidth, setMapsWidth] = useState(0)
 
@@ -92,7 +93,7 @@ export default function Dekstop() {
   const playSound = () => {
   if (sound) {
     stopSound()
-    sound.play();
+    sound.pause();
   }
   };
 
@@ -131,14 +132,29 @@ export default function Dekstop() {
 
         {/* Navbar */}
         <nav className="fixed w-full top-0 border-opacity-0 lg:px-8 px-4 pt-[18px] z-50">
-          <div className="group flex h-full border-b border-white items-center justify-between  mx-auto relative z-10 border-opacity-0">
-            <div className="flexflex-shrink-[5] mr-2">
-              <div className="flex">
-                <a href="/" className="w-min-content">
-                  <img src="/logo.svg" alt="Logo" className="p-2 rounded hover:bg-red-600 w-32" />
-                </a>n
+          <div className="group flex h-full border-b border-white items-center justify-between mx-auto relative z-10 border-opacity-0">
+            <div className="flex">
+              <a href="/" className="w-min-content">
+                <img src="/logo.svg" alt="Logo" className="p-2 rounded hover:bg-red-600 w-32" />
+              </a>
+            </div>
+            <div className="flex flex-shrink-[5] mr-2 relative">
+              <div className="flex justify-end w-full">
+                <button onClick={() => setIsOpen(!isOpen)} className="mt-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-7 h-7">
+                    <path className={`${!isOpen ? 'block' : 'hidden'}`} strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    <path className={`${isOpen ? 'block' : 'hidden'}`} strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
-              {/* Add another items navbar here */}
+              {/* Daftar yang akan muncul ketika tombol diklik */}
+              <div className={`absolute text-white right-0 mt-10 ${isOpen ? 'block' : 'hidden'}`}>
+                <a href="/psikolog" className="bg-slate-950 w-fit text-md bg-opacity-55 rounded-2xl block px-6 py-2">Home</a>
+                <a href="/#feedback" className="bg-slate-950 w-fit bg-opacity-55 rounded-2xl block px-6 py-2 mt-2">About</a>
+                <a href="/tentangkami" className=" bg-slate-950 w-fit bg-opacity-55 rounded-2xl block px-6 py-2 mt-2">Gitbook</a>
+                <a className="bg-slate-950 bg-opacity-55 w-fit rounded-2xl block px-6 py-2 mt-2">Discord</a>
+                <a className="bg-slate-950 bg-opacity-55 w-fit rounded-2xl block px-6 py-2 mt-2">Twitter</a>
+              </div>
             </div>
           </div>
         </nav>
