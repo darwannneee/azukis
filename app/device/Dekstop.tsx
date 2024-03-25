@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import { useSound } from 'use-sound';
 import {Word1, Word2, Word3, Word4, Word5, Word6, Word7, Word8, Word9} from "./data/textDekstop"
 // Import Image
+import {Howl, Howler} from 'howler'
+
 import gambar from "../assets/img/graffiti_bg_final.jpg";
 import shao from "../assets/img/shao.png";
 import shao1 from "../assets/img/shaos.png";
@@ -15,11 +17,8 @@ export default function Dekstop() {
   const [imageWidth, setimageWidth] = useState(0);
   const roundedRef = useRef(null);
   const imageRef = useRef(null)
-  const [mapsWidth, setMapsWidth] = useState(0)
 
-  // variabel for usesound
-  const [play, { stop }] = useSound('/song.mp3');
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [mapsWidth, setMapsWidth] = useState(0)
 
   useEffect(() => {
     // setFor HandleScroll
@@ -58,15 +57,6 @@ export default function Dekstop() {
     }
   }, [imageWidth]);
 
-  // HandleClick for UseSound
-  const handleClick = () => {
-    if (isPlaying) {
-      stop();
-    } else {
-      play();
-    }
-    setIsPlaying(!isPlaying);
-  };
 
   // Function for click to target POV horizontal
   const scrollToPosition = (width: number) => {
@@ -75,6 +65,65 @@ export default function Dekstop() {
   };
   
 
+  // Song Audio
+  const songs = [
+    { title: "Judul Lagu 1", url: "/song.mp3" },
+    { title: "Judul Lagu 2", url: "/song2.mp3" },
+  ];
+  let [current, setCurrent] = useState(0);
+  let [currentTitle, setCurrentTitle] = useState(songs[current].title);
+  
+  const [sound, setsound] = useState(new Howl({ src: [songs[current].url], loop: true }));
+  
+  useEffect(() => {
+    try {
+      sound.play()
+      setCurrentTitle(songs[current].title); // Update judul lagu saat komponen di-mount dan setiap kali current berubah
+      console.log('Playing')
+     
+    } catch (error) {
+      console.error("Error while playing audio:", error);
+    }
+  }, [sound, current]);
+
+
+
+  const playSound = () => {
+  if (sound) {
+    stopSound()
+    sound.play();
+  }
+  };
+
+  const pauseSound = () => {
+    if (sound) {
+      sound.pause();
+    }
+  };
+
+  const stopSound = () => {
+    if (sound) {
+      sound.stop();
+    }
+  };
+  
+  const playNext = () => {
+    sound.stop();
+    current = (current + 1 === songs.length ? 0 : current + 1);
+    setCurrent(current); // Perbarui nilai current
+    console.log(current);
+    var newSound = new Howl({ src: [songs[current].url], loop: true });
+    setsound(newSound);
+  };
+  
+  const playPrevious = () => {
+    sound.stop();
+    current = (current - 1 === -1 ? songs.length - 1 : current - 1);
+    setCurrent(current); // Perbarui nilai current
+    console.log(current);
+    var newSound = new Howl({ src: [songs[current].url], loop: true });
+    setsound(newSound);
+  };
 
   return (
       <main className="bg-black" style={{ overflow: 'unset', backgroundColor: 'black'}}>
@@ -126,24 +175,24 @@ export default function Dekstop() {
               <div className="flex flex-row justify-between mt-1 w-full">
                 <div className="flex flex-row gap-2.5 mr-1.5 items-end">
                   {/* Image Album */}
-                  <button className="w-20 h-20 flex justify-center items-center border border-tertiary-white overlay-secondary-white hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={() => handleClick()}>
+                  <button className="w-20 h-20 flex justify-center items-center border border-tertiary-white overlay-secondary-white hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" >
                     <div className="bg-white w-full h-full"></div>
                   </button>
 
                   <div className="grid">
                     <div className="mb-2">
-                      <h1 className="text-md">Track 01 - Lorem Ipsum</h1>
+                      <h1 className="text-md">{currentTitle}</h1>
                     </div>
                     <div className="flex flex-row gap-2 mr-1.5">
-                      <button className="w-8 h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={() => handleClick()}>
+                      <button className="w-8 h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={() => playPrevious() }>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 19 2 12 11 5 11 19"></polygon><polygon points="22 19 13 12 22 5 22 19"></polygon></svg>
                       </button>
                       {/* Button Play & Pause */}
-                      <button className="w-8 h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none">
+                      <button className="w-8 h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={() => playSound() }>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                       </button>
                       {/* Button Next */}
-                      <button className="w-8 h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none">
+                      <button className="w-8 h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={()=> playNext()}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 19 22 12 13 5 13 19"></polygon><polygon points="2 19 11 12 2 5 2 19"></polygon></svg>
                       </button>
                       {/* Button Volume UP */}
