@@ -18,6 +18,7 @@ export default function Dekstop() {
   const roundedRef = useRef(null);
   const imageRef = useRef(null)
   const [isOpen, setIsOpen] = useState(false)
+  const [volumeRange, setVolumeRange] = useState(2);
 
   const [mapsWidth, setMapsWidth] = useState(0)
 
@@ -75,7 +76,7 @@ export default function Dekstop() {
   let [current, setCurrent] = useState(0);
   let [currentTitle, setCurrentTitle] = useState(songs[current].title);
   
-  const [sound, setsound] = useState(new Howl({ src: [songs[current].url], loop: true }));
+  const [sound, setsound] = useState(new Howl({ src: [songs[current].url], loop: true, volume: 0.2 * volumeRange   }));
   
   useEffect(() => {
     try {
@@ -92,8 +93,7 @@ export default function Dekstop() {
 
   const playSound = () => {
   if (sound) {
-    stopSound()
-    sound.pause();
+    sound.play();
   }
   };
 
@@ -126,7 +126,16 @@ export default function Dekstop() {
     var newSound = new Howl({ src: [songs[current].url], loop: true });
     setsound(newSound);
   };
-  
+
+
+  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(event.target.value);
+    setVolumeRange(value);
+
+    sound.volume(0.2 * volumeRange)
+    console.log(`Range Value : ${value}`);
+  };
+
 
   return (
       <main className="bg-black dekstop" style={{ overflow: 'unset', backgroundColor: 'black'}} >
@@ -213,9 +222,9 @@ export default function Dekstop() {
                       <button className="md:w-6 md:h-6 xl:w-8 xl:h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={()=> playNext()}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 19 22 12 13 5 13 19"></polygon><polygon points="2 19 11 12 2 5 2 19"></polygon></svg>
                       </button>
-                      {/* Button Volume UP */}
-                      <button className="md:w-6 md:h-6 xl:w-8 xl:h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                      {/* Button Pause */}
+                      <button className="md:w-6 md:h-6 xl:w-8 xl:h-8 flex justify-center items-center border border-[hsla(0,0%,100%,.05)] bg-[hsla(0,0%,100%,.1)] hover:overlay-primary-white rounded-lg duration-200 disabled:opacity-40 disabled:pointer-events-none" onClick={() => pauseSound() }>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5L6 9H2v6h4l5 4zM22 9l-6 6M16 9l6 6"/></svg>
                       </button>
                       {/* ScrolSpY */}
                       <input type="range" className="md:w-20 xl:w-24 bg-transparent cursor-pointer appearance-none disabled:opacity-50 disabled:pointer-events-none focus:outline-none
@@ -251,7 +260,7 @@ export default function Dekstop() {
                       [&::-moz-range-track]:w-full
                       [&::-moz-range-track]:h-2
                       [&::-moz-range-track]:bg-gray-100
-                      [&::-moz-range-track]:rounded-full" id="steps-range-slider-usage" min="0" max="5" step="0.5"></input>
+                      [&::-moz-range-track]:rounded-full" id="steps-range-slider-usage" min="0" max="5" step="1" defaultValue={volumeRange} onChange={handleVolumeChange}></input>
                     </div>
                   </div>
                   {/* Button Prev */}
