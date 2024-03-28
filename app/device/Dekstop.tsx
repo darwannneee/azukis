@@ -160,7 +160,7 @@ export default function Dekstop() {
       <main className="bg-black dekstop" style={{ overflow: 'unset', backgroundColor: 'black'}} >
 
         {/* Navbar */}
-        <nav className="fixed w-full top-0 border-opacity-0 lg:px-8 px-4 pt-[18px] z-50">
+        <nav className="fixed w-full top-0 border-opacity-0 lg:px-8 px-4 pt-[18px] z">
           <div className="group flex h-full border-b border-white items-center justify-between mx-auto relative z-10 border-opacity-0">
             <div className="flex">
               <a href="/" className="w-min-content">
