@@ -137,7 +137,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                         <h1 className='uppercase text-yellow-400 font-sans text-2xl md:text-3xl font-black mb-2 duration-[2000ms] opacity-100'>The Origin</h1>
                         <div className='text-sm md:text-base font-sans text-white duration-[2000ms] opacity-100'>
                             <p>People in the Alley walk by this mural daily.</p>
-                            <p>But few know its link to the Garden's origin.</p>
+                            <p>But few know its link to the Garden&apos;s origin.</p>
                         </div>
                     </div>
                     <div className='relative w-full flex justify-center'>
